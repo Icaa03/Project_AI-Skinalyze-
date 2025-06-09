@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "upload"
 
-genai.configure(api_key="AIzaSyDcM_pNXTKB-zOCWPc2fYO8pYlG5b2_dCQ")  
+genai.configure(api_key="AIzaSyAyKJh70O3qPYHYN-l94CXyIqBhNglV2sU")  
 model = genai.GenerativeModel("gemini-2.0-flash")  
 
 @app.route("/", methods=["GET"])
