@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Skinalyze</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='images/skinalyze-logo.png') }}" alt="Logo Skinalyze" class="logo">
+        <h1>Skinalyze</h1>
+        <p class="subtitle">Analyze Your Skin with AI</p>
+        <p class="catchphrase">Kamu bingung mau pakai produk apa yang cocok dengan keadaan kamu?<br>Serahkan pada <strong>Skinalyze ✨</strong></p>
+
+        <form method="POST" enctype="multipart/form-data" action="/analyze">
+            <div class="form-section">
+                <label>Unggah Foto Wajah Anda</label>
+                <input type="file" name="foto" required>
+            </div>
+
+            <div class="form-section">
+                <label>Jenis Kulit Anda</label>
+                <select name="jenis_kulit">
+                    <option value="Kering">Kering</option>
+                    <option value="Berminyak">Berminyak</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Kombinasi">Kombinasi</option>
+                    <option value="Sensitif">Sensitif</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <label>Masalah Kulit</label>
+                <select name="masalah_kulit">
+                    <option value="Jerawat">Jerawat</option>
+                    <option value="Flek Hitam">Flek Hitam</option>
+                    <option value="Kusam">Kusam</option>
+                    <option value="Chicken Skin">Chicken Skin</option>
+                    <option value="Keriput">Keriput</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <label>Budget</label>
+                <select name="budget">
+                    <option value="< Rp100.000">< Rp100.000</option>
+                    <option value="Rp100.000 - Rp500.000">Rp100.000 - Rp500.000</option>
+                    <option value="Rp600.000 - Rp1.000.000">Rp600.000 - Rp1.000.000</option>
+                    <option value="> Rp1.000.000">> Rp1.000.000</option>
+                </select>
+            </div>
+
+            <button type="submit">🔍 Analisa Sekarang</button>
+        </form>
+
+        {% if reply %}
+        <div class="result">
+            <h2>Hasil Analisis</h2>
+            {{ reply|safe }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
